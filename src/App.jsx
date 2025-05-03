@@ -1,35 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const RegistrationForm = () => {
+  const [name, setName] = useState('');
+  const [hobbies, setHobbies] = useState(['']);
+
+  const handleHobbyChange = (index, value) => {
+    const newHobbies = [...hobbies];
+    newHobbies[index] = value;
+    setHobbies(newHobbies);
+  };
+
+  const addHobby = () => {
+    setHobbies([...hobbies, '']);
+  };
+
+  const removeHobby = (index) => {
+    const newHobbies = hobbies.filter((_, i) => i !== index);
+    setHobbies(newHobbies);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Name: ${name}\nHobbies: ${hobbies.filter(h => h).join(', ')}`);
+    // You can also send this data to a backend here
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <form onSubmit={handleSubmit}>
+      <h2>Registration Form</h2>
 
-export default App
+      <div style={{ marginBottom: '10px' }}>
+        <label>Name: </label><br />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </div>
+
+      <div style={{ marginBottom: '10px' }}>
+        <label>Hobbies:</label><br />
+        {hobbies.map((hobby, index) => (
+          <div key={index} style={{ display: 'flex', marginBottom: '5px' }}>
+            <input
+              type="text"
+              value={hobby}
+              onChange={(e) => handleHobbyChange(index, e.target.value)}
+              placeholder="Enter a hobby"
+              required
+            />
+            {hobbies.length > 1 && (
+              <button type="button" onClick={() => removeHobby(index)} style={{ marginLeft: '5px' }}>
+                Remove
+              </button>
+            )}
+          </div>
+        ))}
+        <button type="button" onClick={addHobby}>
+          Add Another Hobby
+        </button>
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+  );
+};
+
+export default RegistrationForm;
+

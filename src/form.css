@@ -1,0 +1,80 @@
+#register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* left: 30vw; */
+    align-items: center;
+}
+h1 {
+    font-size: 2.2em;
+    line-height: 1.1;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 500px;
+    /* margin: 40px auto; */
+    padding: 20px;
+    background: #272a2c;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  form div {
+    margin-bottom: 9px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .hobbyField{
+    display: flex;
+  }
+  
+  input[type="submit"],
+  button {
+    padding: 8px 12px;
+    margin-top: 10px;
+    border: none;
+    background-color: #1a1a1a;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button {
+    margin-left: 10px;
+  }
+  
+  button:hover,
+  input[type="submit"]:hover {
+    background-color: #333232;
+  }
+  
+  .error {
+    color: rgb(255, 30, 30);
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
+  
+#name:focus {
+    color: black;
+    border-color: #00b36e;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px #ffd000, 0 0 20px #ff00d4, 0 0 30px #2f3530;
+  
+  }
